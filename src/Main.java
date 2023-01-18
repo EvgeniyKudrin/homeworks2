@@ -1,21 +1,18 @@
 public class Main {
     public static void main(String[] args) {
-        //OnTaskDoneListener listener = System.out::println;
-        //Worker worker = new Worker(listener);
-       //worker.start();
-
         OnTaskDoneListener listener = System.out::println;
-        Worker worker = new Worker(listener);
-        worker.start2();
+        OnTeskErrorListener errorListener = System.out::println;
+        Worker worker = new Worker(listener, errorListener);
+        worker.start();
     }
 
     @FunctionalInterface
     public interface OnTaskDoneListener {
-        void onDone(String result );
+        void onDone(String result);
     }
 
     @FunctionalInterface
     public interface OnTeskErrorListener {
-        void onError(String resilt );
+        void onError(String result);
     }
 }
